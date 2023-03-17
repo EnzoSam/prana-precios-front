@@ -1,0 +1,10 @@
+<div *ngIf="rubros && rubros.length > 0">
+
+<mat-button-toggle-group name="rubros" aria-label="rubros" multiple
+ (change)="onRubroClick($event)">
+    <mat-button-toggle *ngFor="let r of rubros" [value]="r.id">{{r.nombre}}
+
+    </mat-button-toggle>
+</mat-button-toggle-group>
+
+</div>

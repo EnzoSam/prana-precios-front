@@ -1,0 +1,17 @@
+  <mat-card *ngIf="precioItem && precioItem.Item" class="example-card">
+    <img mat-card-image src="http://via.placeholder.com/180x180" alt="Producto">
+    <mat-card-header>
+      <mat-card-title>{{precioItem.precio}}</mat-card-title>
+      <mat-card-subtitle>{{precioItem.Item.nombre}}</mat-card-subtitle>
+      <mat-card-subtitle>{{precioItem.Item.codigo}}</mat-card-subtitle>
+    </mat-card-header>    
+    <mat-card-content>
+      <p>
+        {{precioItem.Item.descripcion}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary">Consultar</button>
+      <button mat-button color="primary">Agregar a carrito</button>
+    </mat-card-actions>
+  </mat-card>  

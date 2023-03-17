@@ -1,0 +1,5 @@
+<app-filtro-precios (rubrosChanged)="rubrosChanged($event)"
+></app-filtro-precios>
+<div class="prices-container">
+    <app-precio-item-row *ngFor="let p of preciosFiltered" [precioItem]="p"></app-precio-item-row>
+</div>
