@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IPrecioItem } from 'src/app/models/precioItem.model';
 import { IRubro } from 'src/app/models/rubro.model';
 import { AppService } from 'src/app/services/app.service';
+import { ItemService } from 'src/app/services/item.service';
 import { PrecioService } from 'src/app/services/precio.service';
 import { RubroService } from 'src/app/services/rubro.sevice';
 
@@ -17,7 +18,8 @@ export class ListadoPreciosComponent implements OnInit {
 
   constructor(private _preciosService: PrecioService,
     private _rubroService: RubroService,
-    private _appService: AppService) {
+    private _appService: AppService,
+    private _itemsService:ItemService) {
     this.precios = [];
     this.preciosFiltered = [];
   }
@@ -30,11 +32,12 @@ export class ListadoPreciosComponent implements OnInit {
       this.precios = response;
       this._preciosService.cachPrices(this.precios);
       this._rubroService.catchRubros(this.precios);
+      this._itemsService.catchItems(this.precios);
       this._appService.pricesChanged();
+      this.preciosFiltered = this.precios;
     },
       error => {
         console.log(error);
-        alert(error);
         this.loadCache();
       });
   }
@@ -42,7 +45,9 @@ export class ListadoPreciosComponent implements OnInit {
   loadCache() {
     this.precios = this._preciosService.getPricesCache();
     this._rubroService.catchRubros(this.precios);
+    this._itemsService.catchItems(this.precios);
     this._appService.pricesChanged();
+    this.preciosFiltered = this.precios;
   }
 
   rubrosChanged(rubros: IRubro[]) {

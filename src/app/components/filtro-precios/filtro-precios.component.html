@@ -1,3 +1,20 @@
+<form class="example-form">
+<mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Ingrese codigo o nombre de producto</mat-label>
+    <input type="text"
+            placeholder="Ingrese codigo o nombre de producto"
+            aria-label="Ingrese codigo o nombre de producto"
+            matInput
+            [formControl]="myControl"
+            [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete">
+    <mat-option *ngFor="let option of filteredStreets | async" [value]="option">
+        {{option}}
+    </mat-option>
+    </mat-autocomplete>
+</mat-form-field>
+</form>
+<mat-spinner *ngIf="!rubros || rubros.length === 0"></mat-spinner>
 <div *ngIf="rubros && rubros.length > 0">
 
 <mat-button-toggle-group name="rubros" aria-label="rubros" multiple

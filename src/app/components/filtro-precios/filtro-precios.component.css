@@ -1,0 +1,17 @@
+.example-form {
+    display: flex;
+    align-items: center; 
+    margin-top: 20px;
+  }
+
+  
+  .example-full-width {
+    width: 70%;
+    margin: 0 auto;
+  }
+
+  mat-spinner
+  {
+    margin: 0 auto;
+    margin-top: auto;
+  }
